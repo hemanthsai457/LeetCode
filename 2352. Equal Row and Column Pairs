@@ -1,0 +1,9 @@
+class Solution:
+    def equalPairs(self, grid: List[List[int]]) -> int:
+        r_c = defaultdict(int)
+        c=0
+        for i in grid:
+            r_c[tuple(i)]+=1
+        for i in zip(*grid):
+            c+=r_c[tuple(i)]
+        return c
