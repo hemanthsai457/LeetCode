@@ -1,0 +1,16 @@
+class Solution:
+    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:
+        ans=0
+        m_ans=0
+        prev=0
+        for i in range(0,len(customers)):
+            if(grumpy[i]==0):
+                ans+=customers[i]
+        for l in range(0,len(customers)-(minutes-1)):
+            prev=m_ans
+            m_ans=0
+            for i in range(l,l+minutes):
+                if(grumpy[i]==1):
+                    m_ans+=customers[i]
+            m_ans = max(prev,m_ans) 
+        return m_ans+ans
